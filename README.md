@@ -1,1 +1,1 @@
-TODO app developer for tutorial published on http://www.codeinvaders.net
+TODO app developed for tutorial published on http://www.codeinvaders.net
