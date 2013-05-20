@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" >
+  <title>Todo App – NodeJS</title>
+  <link rel="stylesheet" href="todo.css"/>
+</head>
+<body>
+  <div id="todoapp">
+    <header>
+      <h1>TodoApp - NodeJS</h1>
+	  <form method="POST" action="/todo/create">
+        <input id="new-todo" type="text" placeholder="Digita un nuovo todo!" name="name"/>
+	<input type="hidden" name="isCompleted" value="false"/>
+	    <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"/>
+  </form>
+    </header>
+   <% if (locals.error) { %>
+	<section id="main">
+		<div><%= error %></div>
+	</section>
+   <% } %>
+    <section id="main" style="display:block;">
+      <ul id="todo-list">
+ 	    <% for (var i=0; i<todos.length; i++) { %>
+	      <li class="<%= todos[i].isCompleted? 'done' : '' %> ">
+		
+
+		<div class="view">
+      			<input class="toggle" type="checkbox" <%= todos[i].isCompleted ? 'checked="checked"' : '' %> onclick="window.location='/todo/markAsCompleted/<%= todos[i]._id%>' "/>
+      			<label><%= todos[i].name %></label>
+      			<a class="destroy" href="/todo/delete/<%= todos[i]._id %>">X</a>
+    		</div>
+
+
+	      </li>
+    <% } %>
+      </ul>
+    </section>
+    <footer>
+    </footer>
+  </div>
+  </body>
+</html>
+

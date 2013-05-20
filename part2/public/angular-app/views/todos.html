@@ -1,0 +1,33 @@
+<div id="todoapp">
+    <header>
+        <h1>
+            TodoApp - NodeJS
+        </h1>
+        <form>
+            <input id="new-todo" type="text" placeholder="Digita un nuovo todo!" name="name" ng-model="newTodo.name" />
+            <input type="hidden" name="isCompleted" ng-model="newTodo.isCompleted"
+            />
+            <input type="submit" style="" value="Crea Todo" ng-click="createTodo(newTodo)" />
+        </form>
+    </header>
+    <section id="main" ng-show="error">
+        <div>
+        </div>
+    </section>
+    <section id="main" style="display:block;">
+        <ul id="todo-list">
+            <li ng-repeat="todo in todos" ng-class="{true:'done',false:''}[todo.isCompleted]">
+                <div class="view">
+                    <input class="toggle" type="checkbox" ng-click="markAsCompleted(todo,$index)"
+                    ng-checked="todo.isCompleted" />
+                    <label ng-click="markAsCompleted(todo,$index)">
+                        {{ todo.name }}
+                    </label>
+                    <a class="destroy" ng-click="deleteTodo(todo,$index)">X</a>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <footer>
+    </footer>
+</div>
